@@ -1,0 +1,30 @@
+# Prerequisite: install blast+ from ncbi, download the nt database and create a gorilla database from the gorilla3 genome
+# running create_squatch_dir.py is optional, it creates a few redundant steps
+MGRAST
+	Navigate to http://metagenomics.anl.gov/?page=Home
+	Log innd 
+	Click on the barchart icon in upper right corner of screen to go to the anaylsis page
+	For every metagenome of interest:
+		Select a metagenome
+		For every RNA Annotation Source (do not use M5RNA):
+			Select a RNA annotation Source
+			Change 'Max. e-Value Cutoff' to -20
+			Change 'Min. % Identity Cutoff' to 50
+			Change 'Min. Alignment Length Cutoff' to 10
+			Select the radio button next 'barchart'
+			Generate
+			Navigate the barchart to 'Eukaryota'->'Chordata'->'Mammalia'->'Primates'->'Hominidae'
+			Select 'to workbench' next to 'Genus Distribution (Hominidae)' to send features to workbench
+			Navigate to the Workbench tab
+			For every DNA/RNA annotation:
+				Download annotated metagenome fasta file
+Run sort_fastas.py <len cut-off> in the directory containing the fasta files
+	#the <len cut-off> I ran and used was 100, which means if a sequence is less than 100 nucleotides long, its considered small
+Navigate to the new sorted_fastas_<len cut-off> directory created from the previous script
+Run blastn.sh <directory_containing_sortedfna_files> <gorilla_db_name>
+Navigate to the new <gorilla_db_name>_blast directory created by the previous scripts
+Run findFasta.py <species.fna> <species.blast> for each resulting blast file.
+    The fasta file paired with the blast file should come from the sorted_<len cut-off> direcotry.
+Run blastn.sh <directory_containing_found_fasta_files> nt
+Navigate to the new nt_blast directory.
+
