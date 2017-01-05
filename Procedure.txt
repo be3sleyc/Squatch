@@ -1,5 +1,4 @@
 # Prerequisite: install blast+ from ncbi, download the nt database and create a gorilla database from the gorilla3 genome
-# running create_squatch_dir.py is optional, it creates a few redundant steps
 MGRAST
 	Navigate to http://metagenomics.anl.gov/?page=Home
 	Log innd 
@@ -18,13 +17,16 @@ MGRAST
 			Navigate to the Workbench tab
 			For every DNA/RNA annotation:
 				Download annotated metagenome fasta file
-Run sort_fastas.py <len cut-off> in the directory containing the fasta files
+Run sortFastas.py <fasta_dir> <len cut-off>
+	#the fasta_dir is the directory containing your fasta files from the mgrast step
 	#the <len cut-off> I ran and used was 100, which means if a sequence is less than 100 nucleotides long, its considered small
-Navigate to the new sorted_fastas_<len cut-off> directory created from the previous script
-Run blastn.sh <directory_containing_sortedfna_files> <gorilla_db_name>
-Navigate to the new <gorilla_db_name>_blast directory created by the previous scripts
-Run findFasta.py <species.fna> <species.blast> for each resulting blast file.
-    The fasta file paired with the blast file should come from the sorted_<len cut-off> direcotry.
-Run blastn.sh <directory_containing_found_fasta_files> nt
+	#this script will produce a summary file which contains some data on the average sequence lengths so you can judge if your 
+	# cutoff is appropriate
+Run blastn.sh <directory_containing_sortedfna_files> <gorilla_db_name> <E-value>
+	#for my E-value I used 
+Run findFastas.py <directory_containing_blast_files> <directory_containing_sortedfna_files>
+	#this script with find the fasta files that matched something in blast
+Run blastn.sh <directory_containing_found_fasta_files> nt <E-value>
+	#I used the same E-value as before
 Navigate to the new nt_blast directory.
 
