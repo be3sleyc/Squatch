@@ -23,10 +23,9 @@ Run sortFastas.py <fasta_dir> <len cut-off>
 	#this script will produce a summary file which contains some data on the average sequence lengths so you can judge if your 
 	# cutoff is appropriate
 Run blastn.sh <directory_containing_sortedfna_files> <gorilla_db_name> <E-value>
-	#for my E-value I used 
 Run findFastas.py <directory_containing_blast_files> <directory_containing_sortedfna_files>
 	#this script with find the fasta files that matched something in blast
 Run blastn.sh <directory_containing_found_fasta_files> nt <E-value>
-	#I used the same E-value as before
+	#I used the same E-value as in the first use of blastn.sh
 Navigate to the new nt_blast directory.
 
