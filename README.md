@@ -1,6 +1,6 @@
 # Squatch in metagenomics
-###2015-2017 BYU College of Life Sciences, Department of Biology, 
-####Metagenomic research
+### 2015-2017 BYU College of Life Sciences, Department of Biology, 
+#### Metagenomic research
 
 # Procedure
 ### Prerequisite: 
@@ -9,7 +9,7 @@
 		* download the nt database
 		* create a gorilla database from the gorilla3 genome
 
-##MGRAST
+## MGRAST
 1. Navigate to http://metagenomics.anl.gov/?page=Home
 2. Log in
 3. Click on the barchart icon in upper right corner of screen to go to the anaylsis page
@@ -27,9 +27,9 @@
 		* Navigate to the Workbench tab
 		* For every DNA/RNA annotation:
 			* Download the annotated metagenome fasta file
-#####At this point you should have a new directory full of fasta files from your metagenome that were identified as hominid
-##Terminal
-#####All of the following commands should be run from the directory that contains both the Scripts directory and the Fasta Directory
+##### At this point you should have a new directory full of fasta files from your metagenome that were identified as hominid
+## Terminal
+##### All of the following commands should be run from the directory that contains both the Scripts directory and the Fasta Directory
 1. Run ```sortFastas.py <fasta_dir> <len cut-off>```
 	- the fasta_dir is the directory containing your fasta files from the mgrast step
 	- the <len cut-off> I ran and used was 100, which means if a sequence is less than 100 nucleotides long, its considered small
